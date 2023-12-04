@@ -1,0 +1,22 @@
+{
+  "workbench.colorTheme": "GitHub Dark",
+  "prettier.printWidth": 100,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass"],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma",
+    "editor.formatOnSave": true
+  },
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true
+}
