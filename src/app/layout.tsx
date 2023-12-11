@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
 
-import Navbar from "@/components/Navbar/Navbar";
-import NavLink from "@/components/Navbar/NavLink";
-import CustomBsHouseFill from "@/components/CustomBSIcons/CustomBsHouseFill";
-import CustomBsArchiveFill from "@/components/CustomBSIcons/CustomBsArchiveFill";
-import CustomBsInfoCircleFill from "@/components/CustomBSIcons/CustomBsHouseFill copy";
+import MyNavbar from "@/components/MyComponents/MyNavbar";
 
 const firaCode = Fira_Code({ subsets: ["latin"] });
 
@@ -23,17 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${firaCode.className} bg-background`}>
-        <Navbar>
-          <NavLink label="Home" href="/">
-            <CustomBsHouseFill />
-          </NavLink>
-          <NavLink label="Inventory" href="/inventory">
-            <CustomBsArchiveFill />
-          </NavLink>
-          <NavLink label="About" href="/about">
-            <CustomBsInfoCircleFill />
-          </NavLink>
-        </Navbar>
+        <MyNavbar />
 
         {children}
       </body>
