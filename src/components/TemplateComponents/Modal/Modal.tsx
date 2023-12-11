@@ -5,10 +5,15 @@ import CustomButton from "../CustomButton";
 
 interface ICustomModelProps {
   children: React.ReactNode;
-  buttonLabel: string;
+  buttonCName?: string;
+  buttonLabel?: string;
 }
 
-export default function Modal({ children, buttonLabel }: ICustomModelProps) {
+export default function Modal({
+  children,
+  buttonCName,
+  buttonLabel,
+}: ICustomModelProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -34,7 +39,9 @@ export default function Modal({ children, buttonLabel }: ICustomModelProps) {
 
   return (
     <>
-      <CustomButton onClick={handleClick}>{buttonLabel}</CustomButton>
+      <CustomButton className={buttonCName} onClick={handleClick}>
+        {buttonLabel}
+      </CustomButton>
 
       {/* Modal Window */}
       {showModal && (

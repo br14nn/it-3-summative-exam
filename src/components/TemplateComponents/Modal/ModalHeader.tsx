@@ -1,8 +1,4 @@
 import { twMerge } from "tailwind-merge";
-import { clsx } from "clsx";
-import { cva, VariantProps } from "class-variance-authority";
-
-const modalHeaderVariants = cva("bg-primary font-bold");
 
 interface IModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -14,10 +10,7 @@ export default function ModalHeader({
   ...props
 }: IModalHeaderProps) {
   return (
-    <div
-      className={twMerge(clsx(modalHeaderVariants({ className })))}
-      {...props}
-    >
+    <div className={twMerge("bg-primary font-bold", className)} {...props}>
       {children}
     </div>
   );
