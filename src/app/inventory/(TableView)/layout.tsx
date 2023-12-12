@@ -14,7 +14,7 @@ export default function InventoryLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex min-h-screen flex-col gap-12 py-12 pl-[123px] pr-12 text-text">
+    <main className="flex h-full w-full flex-col gap-12 py-12 pl-[123px] pr-12 text-text">
       <SearchBox />
       <AddItemModal />
       {children}

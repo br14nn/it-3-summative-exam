@@ -1,7 +1,6 @@
-import { useRouter } from "next/navigation";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import InventoryLayout from "@/app/inventory/layout";
+import InventoryLayout from "@/app/inventory/(TableView)/layout";
 
 jest.mock("next/navigation", () => ({
   useRouter() {
