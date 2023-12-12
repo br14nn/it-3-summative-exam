@@ -9,7 +9,9 @@ import CustomTextInput from "@/components/TemplateComponents/CustomTextInput";
 import ModalHeader from "./ModalHeader";
 import ModalCloserBackground from "./ModalCloserBackground";
 import ModalWindow from "./ModalWindow";
-import createNewItem from "@/utils/apiRequests/createNewItem";
+
+import createNewProduct from "@/utils/apiRequests/createNewProduct";
+import revalidate from "@/utils/serverActions/revalidate";
 
 const defaultCustomTextInputClass =
   "w-[300px] border-background px-3 py-1 text-center font-medium text-black transition-colors duration-300 placeholder:text-background/80 focus:border-background/60";
@@ -49,9 +51,11 @@ export default function AddItemModal() {
 
     handleCloseModal();
 
-    const res = await createNewItem(prodForm);
+    const res = await createNewProduct(prodForm);
 
     if (res.ok) {
+      revalidate("/inventory");
+
       alert("Successfully created an item");
     } else {
       alert(`Failed created an item (${res.response})`);
@@ -62,7 +66,7 @@ export default function AddItemModal() {
     <>
       <CustomButton
         onClick={handleOpenModal}
-        className="hover:bg-accent-dark-1 bg-accent px-4 py-2 font-medium"
+        className="bg-accent px-4 py-2 font-medium hover:bg-accent-dark-1"
       >
         Add Item
       </CustomButton>
@@ -101,7 +105,7 @@ export default function AddItemModal() {
               value={prodForm.prod_quantity}
               onChange={handleInputChange}
             />
-            <CustomButton className="hover:bg-accent-dark-1 w-full bg-accent py-3 font-semibold">
+            <CustomButton className="w-full bg-accent py-3 font-semibold hover:bg-accent-dark-1">
               Create Item
             </CustomButton>
           </form>
