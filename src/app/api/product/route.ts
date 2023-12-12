@@ -1,7 +1,18 @@
 import { NextResponse, NextRequest } from "next/server";
+
 import prisma from "@/utils/prisma";
 
 import IProdForm from "@/types/IProdForm";
+
+export async function GET() {
+  try {
+    const res = await prisma.product.findMany();
+
+    return NextResponse.json({ response: res, ok: true });
+  } catch (error: any) {
+    return NextResponse.json({ response: error.message, ok: false });
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
