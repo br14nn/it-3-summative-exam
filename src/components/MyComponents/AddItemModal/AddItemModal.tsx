@@ -2,20 +2,17 @@
 
 import { useState } from "react";
 
+import IProdForm from "@/types/IProdForm";
+
 import CustomButton from "@/components/TemplateComponents/CustomButton";
 import CustomTextInput from "@/components/TemplateComponents/CustomTextInput";
 import ModalHeader from "./ModalHeader";
 import ModalCloserBackground from "./ModalCloserBackground";
 import ModalWindow from "./ModalWindow";
+import createNewItem from "@/utils/apiRequests/createNewItem";
 
 const defaultCustomTextInputClass =
   "w-[300px] border-background px-3 py-1 text-center font-medium text-black transition-colors duration-300 placeholder:text-background/80 focus:border-background/60";
-
-interface IProdForm {
-  prod_name: string;
-  prod_price: number | "";
-  prod_quantity: number | "";
-}
 
 export default function AddItemModal() {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -47,10 +44,18 @@ export default function AddItemModal() {
     }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     handleCloseModal();
+
+    const res = await createNewItem(prodForm);
+
+    if (res.ok) {
+      alert("Successfully created an item");
+    } else {
+      alert(`Failed created an item (${res.response})`);
+    }
   };
 
   return (
