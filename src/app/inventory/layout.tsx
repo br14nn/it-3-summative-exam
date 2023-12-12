@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import SearchBox from "@/components/MyComponents/SearchBox";
-import AddItemModal from "@/components/MyComponents/AddItemModal";
+import AddItemModal from "@/components/MyComponents/AddItemModal/AddItemModal";
 
 export const metadata: Metadata = {
   title: "IMS: Inventory",
