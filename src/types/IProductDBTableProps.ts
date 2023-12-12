@@ -6,7 +6,7 @@ interface IResponse {
   prod_quantity: number;
 }
 
-export default interface IFindAllProductsRes {
+export default interface IProductDBTableProps {
   response: IResponse[];
   ok: boolean;
 }

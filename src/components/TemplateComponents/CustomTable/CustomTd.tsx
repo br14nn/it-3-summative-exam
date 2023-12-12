@@ -10,7 +10,7 @@ export default function CustomTd({
   ...props
 }: ICustomTdProps) {
   return (
-    <td className={twMerge("px-4 py-2", className)} {...props}>
+    <td className={twMerge("px-4 py-2 ", className)} {...props}>
       {children}
     </td>
   );

@@ -4,9 +4,21 @@ import prisma from "@/utils/prisma";
 
 import IProdForm from "@/types/IProdForm";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const params = req.nextUrl.searchParams;
+  const prod_name = params.get("prod_name") as string;
+
   try {
-    const res = await prisma.product.findMany();
+    const res = await prisma.product.findMany({
+      orderBy: {
+        id: "desc",
+      },
+      where: {
+        prod_name: {
+          contains: prod_name ? prod_name : "",
+        },
+      },
+    });
 
     return NextResponse.json({ response: res, ok: true });
   } catch (error: any) {
