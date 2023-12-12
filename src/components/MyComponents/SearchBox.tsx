@@ -29,7 +29,11 @@ export default function SearchBox() {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className="h-fit w-fit">
+    <form
+      data-testid="searchBox"
+      onSubmit={handleFormSubmit}
+      className="h-fit w-fit"
+    >
       <label className="flex w-fit flex-row items-center gap-2 rounded-lg border-2 border-primary px-3 py-2">
         <CustomBsSearch size={20} />
         <CustomTextInput
