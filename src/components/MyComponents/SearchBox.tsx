@@ -18,7 +18,7 @@ export default function SearchBox() {
     if (!searchVal) {
       router.push(`${domainName}/inventory`);
     } else {
-      router.push(`${domainName}/inventory/search?prod_name=${searchVal}`);
+      router.push(`${domainName}/inventory/search/${searchVal}`);
     }
   };
 

@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${firaCode.className} bg-background`}>
+      <body className={`${firaCode.className} h-[100svh] bg-background`}>
         <MyNavbar />
 
         {children}

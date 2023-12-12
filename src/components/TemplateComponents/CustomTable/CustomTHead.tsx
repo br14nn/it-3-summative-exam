@@ -10,12 +10,9 @@ export default function CustomTHead({
   ...props
 }: ITableHeadProps) {
   return (
-    <thead>
+    <thead className="sticky top-0 bg-primary">
       <tr
-        className={twMerge(
-          "border-2 border-text bg-primary text-lg font-bold text-black",
-          className,
-        )}
+        className={twMerge("text-lg font-bold text-black ", className)}
         {...props}
       >
         {children}
