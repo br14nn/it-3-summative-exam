@@ -13,7 +13,7 @@ export default function CustomTextInput({
   return (
     <input
       className={twMerge(
-        "rounded-lg border-2 border-black bg-transparent text-text outline-none",
+        "rounded-lg border-2 border-primary bg-transparent text-text outline-none",
         className,
       )}
       type={type}

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import SearchBox from "@/components/MyComponents/SearchBox";
+import AddItemModal from "@/components/MyComponents/AddItemModal";
 
 export const metadata: Metadata = {
   title: "IMS: Inventory",
@@ -15,6 +16,7 @@ export default function InventoryLayout({
   return (
     <main className="flex min-h-screen flex-col gap-12 py-12 pl-[123px] pr-12 text-text">
       <SearchBox />
+      <AddItemModal />
       {children}
     </main>
   );

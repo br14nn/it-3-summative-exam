@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 interface ICustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function CustomButton({
@@ -13,7 +13,7 @@ export default function CustomButton({
   return (
     <button
       className={twMerge(
-        "h-[40px] w-fit rounded-lg bg-primary px-4 transition-colors duration-300",
+        "w-fit rounded-lg bg-primary px-4 transition-colors duration-300",
         className,
       )}
       {...props}
