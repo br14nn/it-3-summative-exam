@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 interface ICustomTextInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  type?: "text";
+  type?: "text" | "number";
 }
 
 export default function CustomTextInput({
@@ -13,7 +13,7 @@ export default function CustomTextInput({
   return (
     <input
       className={twMerge(
-        "border-2 bg-transparent text-text outline-none",
+        "rounded-lg border-2 border-primary bg-transparent text-text outline-none",
         className,
       )}
       type={type}

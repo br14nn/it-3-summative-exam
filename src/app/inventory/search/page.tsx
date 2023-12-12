@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 
 export default function InventorySearchPage() {
   const searchParams = useSearchParams();
-  const pname = searchParams.get("pname");
+  const prod_name = searchParams.get("prod_name");
 
-  return <>Product to search: {pname}</>;
+  return <>Product to search: {prod_name}</>;
 }

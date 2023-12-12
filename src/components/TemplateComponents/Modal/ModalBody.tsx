@@ -10,10 +10,7 @@ export default function ModalBody({
   ...props
 }: IModalBodyProps) {
   return (
-    <div
-      className={twMerge("flex flex-col bg-text text-background", className)}
-      {...props}
-    >
+    <div className="bg-primary p-4" {...props}>
       {children}
     </div>
   );

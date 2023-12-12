@@ -1,57 +1,39 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import CustomButton from "../CustomButton";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-interface ICustomModelProps {
-  children: React.ReactNode;
+import { ModalContext } from "@/components/TemplateComponents/context/ModalContext";
+
+import OpenModalButton from "./OpenModalButton";
+
+interface IModalProps {
   buttonCName?: string;
   buttonLabel?: string;
+  children?: React.ReactNode;
 }
 
 export default function Modal({
-  children,
   buttonCName,
-  buttonLabel,
-}: ICustomModelProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
+  buttonLabel = "Open Modal",
+  children,
+}: IModalProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
-
-  useEffect(() => {
-    //close modal when click outside of the modalRef
-    const handleCloseModal = (e: any) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        setShowModal(false);
-        console.log(modalRef.current);
-      }
-    };
-
-    document.addEventListener("mousedown", handleCloseModal);
-
-    return () => {
-      document.removeEventListener("mousedown", handleCloseModal);
-    };
-  });
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    !showModal ? setShowModal(true) : setShowModal(false);
-  };
 
   return (
     <>
-      <CustomButton className={buttonCName} onClick={handleClick}>
-        {buttonLabel}
-      </CustomButton>
-
-      {/* Modal Window */}
-      {showModal && (
-        <div
-          ref={modalRef}
-          className="fixed inset-0 mx-auto my-auto h-fit w-fit overflow-hidden rounded-lg bg-text"
+      <ModalContext.Provider value={{ setShowModal, showModal }}>
+        <OpenModalButton
+          className={twMerge(
+            "hover:bg-accent-dark-1 bg-accent py-2 font-medium",
+            buttonCName,
+          )}
         >
-          {children}
-        </div>
-      )}
+          {buttonLabel}
+        </OpenModalButton>
+        {/* {showModal && <p>Modal</p>} */}
+        {showModal && children}
+      </ModalContext.Provider>
     </>
   );
 }
