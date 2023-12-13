@@ -14,7 +14,11 @@ Step 3. And run
 npm run dev
 ```
 
-# LIBRARIES
+## Notes
+
+if you get an error about map is not a function try to hard refresh(`ctrl+F5`) the browser.
+
+# Libraries
 
 | Name                          | Usage                                              |
 | ----------------------------- | -------------------------------------------------- |
