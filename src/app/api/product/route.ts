@@ -52,3 +52,24 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ response: error.message, ok: false });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  const params = req.nextUrl.searchParams;
+  const prod_id = params.get("prod_id");
+
+  try {
+    if (!prod_id) {
+      throw new Error("no id specified");
+    }
+
+    const res = await prisma.product.delete({
+      where: {
+        id: prod_id ? Number(prod_id) : undefined,
+      },
+    });
+
+    return NextResponse.json({ response: res, ok: true });
+  } catch (error: any) {
+    return NextResponse.json({ response: error.message, ok: false });
+  }
+}

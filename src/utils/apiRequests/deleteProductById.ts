@@ -1,10 +1,9 @@
-import IProductDBTableProps from "@/types/IProductDBTableProps";
 import domainName from "../domainName";
 
 export default async function (prod_id: number) {
   try {
     const res = await fetch(`${domainName}/api/product?prod_id=${prod_id}`, {
-      method: "GET",
+      method: "DELETE",
     });
 
     return await res.json();
