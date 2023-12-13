@@ -15,6 +15,8 @@ export default function SearchBox() {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setSearchVal("");
+
     if (!searchVal) {
       router.push(`${domainName}/inventory`);
     } else {

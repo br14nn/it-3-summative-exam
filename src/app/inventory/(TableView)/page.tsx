@@ -30,7 +30,7 @@ export default async function InventoryPage() {
 
         <CustomTBody className="max-h-[600px] overflow-y-auto">
           {data.map((item, index) => (
-            <CustomTr key={nanoid()}>
+            <CustomTr key={nanoid()} prod_id={item.id}>
               <CustomTd>{index + 1}</CustomTd>
               <CustomTd>{item.prod_name}</CustomTd>
               <CustomTd>

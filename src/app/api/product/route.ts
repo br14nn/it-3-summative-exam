@@ -6,7 +6,8 @@ import IProdForm from "@/types/IProdForm";
 
 export async function GET(req: NextRequest) {
   const params = req.nextUrl.searchParams;
-  const prod_name = params.get("prod_name") as string;
+  const prod_name = params.get("prod_name");
+  const prod_id = params.get("prod_id");
 
   try {
     const res = await prisma.product.findMany({
@@ -14,6 +15,9 @@ export async function GET(req: NextRequest) {
         id: "desc",
       },
       where: {
+        id: {
+          equals: prod_id ? Number(prod_id) : undefined,
+        },
         prod_name: {
           contains: prod_name ? prod_name : "",
         },
