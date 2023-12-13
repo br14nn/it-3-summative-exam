@@ -1,10 +1,13 @@
 import domainName from "../domainName";
 
-export default async function (data: IProduct) {
+export default async function (id: number, updateForm: IProduct) {
   try {
     const res = await fetch(`${domainName}/api/product`, {
-      method: "POST",
-      body: JSON.stringify(data),
+      method: "PUT",
+      body: JSON.stringify({
+        id: id,
+        ...updateForm,
+      }),
     });
 
     return await res.json();

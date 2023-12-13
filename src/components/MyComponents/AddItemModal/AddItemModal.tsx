@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-//types
-import IProdForm from "@/types/IProdForm";
 //components
 import CustomButton from "@/components/TemplateComponents/CustomButton";
 import CustomTextInput from "@/components/TemplateComponents/CustomTextInput";
@@ -19,7 +17,9 @@ const defaultCustomTextInputClass =
 
 export default function AddItemModal() {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [prodForm, setProdForm] = useState<IProdForm>({
+  const [submitButtonDisabled, setSubmitButtonDisabled] =
+    useState<boolean>(false);
+  const [prodForm, setProdForm] = useState<IProduct>({
     prod_name: "",
     prod_price: "",
     prod_quantity: "",
@@ -36,6 +36,7 @@ export default function AddItemModal() {
       prod_price: "",
       prod_quantity: "",
     });
+    setSubmitButtonDisabled(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,10 +51,12 @@ export default function AddItemModal() {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setSubmitButtonDisabled(true);
+
     const res = await createNewProduct(prodForm);
 
     if (res.ok) {
-      await revalidatePath("/inventory");
+      await revalidatePath("/", "layout");
 
       handleCloseModal();
     } else {
@@ -106,7 +109,10 @@ export default function AddItemModal() {
               value={prodForm.prod_quantity}
               onChange={handleInputChange}
             />
-            <CustomButton className="w-full bg-accent py-3 font-semibold hover:bg-accent-dark-1">
+            <CustomButton
+              className="w-full bg-accent py-3 font-semibold hover:bg-accent-dark-1 disabled:bg-accent-dark-1"
+              disabled={submitButtonDisabled}
+            >
               Create Item
             </CustomButton>
           </form>
