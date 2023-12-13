@@ -1,6 +1,6 @@
 # How To Setup
 
-Step 1. Create a new `.env` file on the root folder.
+Step 1. Create a `.env` file on the root folder.
 
 Step 2. Add this line in the `.env` file:
 
