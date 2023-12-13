@@ -2,16 +2,17 @@
 
 import { useState } from "react";
 
+//types
 import IProdForm from "@/types/IProdForm";
-
+//components
 import CustomButton from "@/components/TemplateComponents/CustomButton";
 import CustomTextInput from "@/components/TemplateComponents/CustomTextInput";
 import ModalHeader from "./ModalHeader";
 import ModalCloserBackground from "./ModalCloserBackground";
 import ModalWindow from "./ModalWindow";
-
+//utils
 import createNewProduct from "@/utils/apiRequests/createNewProduct";
-import revalidate from "@/utils/serverActions/revalidate";
+import revalidatePath from "@/utils/actions/revalidatePath";
 
 const defaultCustomTextInputClass =
   "w-[300px] border-background px-3 py-1 text-center font-medium text-black transition-colors duration-300 placeholder:text-background/80 focus:border-background/60";
@@ -49,16 +50,16 @@ export default function AddItemModal() {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    handleCloseModal();
-
     const res = await createNewProduct(prodForm);
 
     if (res.ok) {
-      revalidate("/inventory");
+      await revalidatePath("/inventory");
 
-      alert("Successfully created an item");
+      handleCloseModal();
     } else {
       alert(`Failed created an item (${res.response})`);
+
+      handleCloseModal();
     }
   };
 
@@ -78,7 +79,7 @@ export default function AddItemModal() {
           <ModalHeader>Create New Item</ModalHeader>
           <form
             onSubmit={handleFormSubmit}
-            className="flex flex-col gap-4 bg-primary px-12 py-4"
+            className="flex flex-col gap-4 bg-primary-light-1 px-12 py-4"
           >
             <CustomTextInput
               className={defaultCustomTextInputClass}
