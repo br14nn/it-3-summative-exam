@@ -16,7 +16,7 @@ npm run dev
 
 ## Notes
 
-if you get an error about map is not a function try to hard refresh(`ctrl+F5`) the browser.
+if you get an error about map is not a function try to hard refresh(`ctrl+F5`) the browser. Do this after finishing the <strong>How To Setup</strong> Section.
 
 # Libraries
 
