@@ -1,8 +1,6 @@
 //components
 import DeleteDialog from "@/components/MyComponents/DeleteDialog";
-//types
-import CustomButton from "@/components/TemplateComponents/CustomButton";
-import IProductDBTableProps from "@/types/IProductDBTableProps";
+import EditDataModal from "@/components/MyComponents/EditDataModal/EditDataModal";
 //utils
 import searchProductById from "@/utils/apiRequests/searchProductById";
 
@@ -13,7 +11,7 @@ const defaultCustomButtonClass = "px-6 py-4 font-medium";
 export default async function page({ params }: { params: { id: string } }) {
   const { response: data } = (await searchProductById(
     Number(params.id),
-  )) as IProductDBTableProps;
+  )) as IProductApiRes;
 
   return (
     data.length && (
@@ -30,13 +28,9 @@ export default async function page({ params }: { params: { id: string } }) {
           {data[0].prod_quantity}
         </p>
         <div className="flex flex-row gap-4">
-          <CustomButton
-            className={`${defaultCustomButtonClass} bg-accent hover:bg-accent-dark-1`}
-          >
-            Edit
-          </CustomButton>
+          <EditDataModal prod_id={Number(data[0].id)} />
 
-          <DeleteDialog prod_id={data[0].id} />
+          <DeleteDialog prod_id={Number(data[0].id)} />
         </div>
       </main>
     )

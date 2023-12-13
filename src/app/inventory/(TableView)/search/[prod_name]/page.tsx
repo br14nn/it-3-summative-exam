@@ -5,10 +5,6 @@ import CustomTable from "@/components/TemplateComponents/CustomTable/CustomTable
 import CustomTd from "@/components/TemplateComponents/CustomTable/CustomTd";
 import CustomTh from "@/components/TemplateComponents/CustomTable/CustomTh";
 import CustomTr from "@/components/TemplateComponents/CustomTable/CustomTr";
-
-//types
-import IProductDBTableProps from "@/types/IProductDBTableProps";
-
 //utils
 import searchProductByName from "@/utils/apiRequests/searchProductByName";
 import { nanoid } from "nanoid";
@@ -20,12 +16,12 @@ export default async function SearchProdNamePage({
 }) {
   const { response: data } = (await searchProductByName(
     params.prod_name,
-  )) as IProductDBTableProps;
+  )) as IProductApiRes;
 
   return (
     <CustomTable>
       <CustomTHead>
-        <CustomTh>ID</CustomTh>
+        <CustomTh></CustomTh>
         <CustomTh>NAME</CustomTh>
         <CustomTh>PRICE</CustomTh>
         <CustomTh>QUANTITY</CustomTh>
@@ -33,7 +29,7 @@ export default async function SearchProdNamePage({
 
       <CustomTBody>
         {data.map((item, index) => (
-          <CustomTr key={nanoid()} prod_id={item.id}>
+          <CustomTr key={nanoid()} prod_id={Number(item.id)}>
             <CustomTd>{index + 1}</CustomTd>
             <CustomTd>{item.prod_name}</CustomTd>
             <CustomTd>

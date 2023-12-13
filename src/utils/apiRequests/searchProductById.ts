@@ -1,4 +1,3 @@
-import IProductDBTableProps from "@/types/IProductDBTableProps";
 import domainName from "../domainName";
 
 export default async function (prod_id: number) {

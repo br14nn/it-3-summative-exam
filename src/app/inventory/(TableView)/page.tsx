@@ -9,11 +9,9 @@ import CustomTh from "@/components/TemplateComponents/CustomTable/CustomTh";
 import CustomTr from "@/components/TemplateComponents/CustomTable/CustomTr";
 //utils
 import findAllProducts from "@/utils/apiRequests/findAllProducts";
-//types
-import IProductDBTableProps from "@/types/IProductDBTableProps";
 
 export default async function InventoryPage() {
-  const { response: data } = (await findAllProducts()) as IProductDBTableProps;
+  const { response: data } = (await findAllProducts()) as IProductApiRes;
 
   return (
     <section className="h-fit max-h-[650px] w-full overflow-hidden overflow-x-auto overflow-y-auto">
@@ -28,7 +26,7 @@ export default async function InventoryPage() {
         {data.length ? (
           <CustomTBody className="max-h-[600px] overflow-y-auto">
             {data.map((item, index) => (
-              <CustomTr key={nanoid()} prod_id={item.id}>
+              <CustomTr key={nanoid()} prod_id={Number(item.id)}>
                 <CustomTd>{index + 1}</CustomTd>
                 <CustomTd>{item.prod_name}</CustomTd>
                 <CustomTd>

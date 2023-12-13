@@ -1,8 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
-
+//utils
 import prisma from "@/utils/prisma";
-
-import IProdForm from "@/types/IProdForm";
 
 export async function GET(req: NextRequest) {
   const params = req.nextUrl.searchParams;
@@ -32,7 +30,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const postData = (await req.json()) as IProdForm;
+    const postData = (await req.json()) as IProduct;
     const { prod_name, prod_price, prod_quantity } = postData;
 
     if (!prod_name || !prod_price || !prod_quantity) {
@@ -44,6 +42,31 @@ export async function POST(req: NextRequest) {
         prod_name: prod_name,
         prod_price: Number(prod_price),
         prod_quantity: Number(prod_quantity),
+      },
+    });
+
+    return NextResponse.json({ response: res, ok: true });
+  } catch (error: any) {
+    return NextResponse.json({ response: error.message, ok: false });
+  }
+}
+
+export async function PUT(req: NextRequest) {
+  try {
+    const updateData = (await req.json()) as IProduct;
+
+    const res = await prisma.product.update({
+      where: {
+        id: Number(updateData.id),
+      },
+      data: {
+        prod_name: updateData.prod_name ? updateData.prod_name : undefined,
+        prod_price: updateData.prod_price
+          ? Number(updateData.prod_price)
+          : undefined,
+        prod_quantity: updateData.prod_quantity
+          ? Number(updateData.prod_quantity)
+          : undefined,
       },
     });
 
