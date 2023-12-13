@@ -6,9 +6,12 @@ import searchProductById from "@/utils/apiRequests/searchProductById";
 
 const defaultPClass = "flex flex-col items-center gap-2 text-4xl";
 const defaultSpanClass = "text-2xl font-medium text-primary";
-const defaultCustomButtonClass = "px-6 py-4 font-medium";
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function SpecificViewPage({
+  params,
+}: {
+  params: { id: number };
+}) {
   const { response: data } = (await searchProductById(
     Number(params.id),
   )) as IProductApiRes;

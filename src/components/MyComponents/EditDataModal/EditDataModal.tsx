@@ -78,6 +78,7 @@ export default function EditDataModal({ prod_id }: IEditDataModalProps) {
       {showEditModal && (
         <div
           className="fixed inset-0 z-[998] h-screen w-screen bg-background/50 backdrop-blur"
+          data-testid="editModalCloser"
           onClick={handleCloseModal}
         />
       )}
