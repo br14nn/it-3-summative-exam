@@ -18,7 +18,7 @@ export default async function SpecificViewPage({
 
   return (
     data.length && (
-      <main className="flex h-full w-full flex-col items-center gap-8 py-12 pl-[123px] pr-12 text-center leading-none text-text">
+      <main className="flex h-full w-full flex-col items-center gap-8 py-6 pl-[99px] pr-6 text-center leading-none text-text lg:py-12 lg:pl-[123px] lg:pr-12">
         <p className={defaultPClass}>
           <span className={defaultSpanClass}>NAME:</span>
           {data[0].prod_name}
