@@ -2,9 +2,9 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Home from "@/app/page";
 
-it("should have Docs text", () => {
+it("should render the h1 of home page", () => {
   render(<Home />);
 
-  const myElem = screen.getByText("Docs");
-  expect(myElem).toBeInTheDocument();
+  const homeH1 = screen.getByText("Simple Invetory Management System");
+  expect(homeH1).toBeInTheDocument();
 });

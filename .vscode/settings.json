@@ -7,7 +7,12 @@
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.wordWrap": "on",
-  "tailwindCSS.classAttributes": ["class", "className", "ngClass"],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "buttonCName"
+  ],
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]

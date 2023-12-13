@@ -1,17 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { cva, VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
-import { clsx } from "clsx";
 
-const customNavLinkVariants = cva(
-  "relative bg-primary/0 rounded-lg p-2 gap-2 text-background font-semibold flex flex-row items-center w-fit transition-colors duration-300 hover:bg-primary",
-);
-
-interface INavItemProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    VariantProps<typeof customNavLinkVariants> {
+interface INavItemProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   label: string;
   children?: React.ReactNode;
 }
@@ -25,7 +17,10 @@ export default function NavLink({
 }: INavItemProps) {
   return (
     <Link
-      className={twMerge(clsx(customNavLinkVariants({ className })))}
+      className={twMerge(
+        "relative flex w-fit flex-row items-center gap-2 rounded-lg bg-primary/0 p-2 font-semibold text-background transition-colors duration-300 hover:bg-primary",
+        className,
+      )}
       href={href}
       {...props}
     >
