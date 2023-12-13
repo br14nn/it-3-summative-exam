@@ -1,8 +1,20 @@
-# About
+# How To Setup
 
-N/A
+Step 1. Create a new `.env` file on the root folder.
 
-# LIBRARIES (Not yet final)
+Step 2. Add this line in the `.env` file:
+
+```
+DATABASE_URL=file:./dev.db
+```
+
+Step 3. And run
+
+```
+npm run dev
+```
+
+# LIBRARIES
 
 | Name                          | Usage                                              |
 | ----------------------------- | -------------------------------------------------- |
