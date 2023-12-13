@@ -19,27 +19,29 @@ export default async function SearchProdNamePage({
   )) as IProductApiRes;
 
   return (
-    <CustomTable>
-      <CustomTHead>
-        <CustomTh></CustomTh>
-        <CustomTh>NAME</CustomTh>
-        <CustomTh>PRICE</CustomTh>
-        <CustomTh>QUANTITY</CustomTh>
-      </CustomTHead>
+    <section className="h-fit max-h-[650px] w-full overflow-hidden overflow-x-auto overflow-y-auto">
+      <CustomTable>
+        <CustomTHead>
+          <CustomTh></CustomTh>
+          <CustomTh>NAME</CustomTh>
+          <CustomTh>PRICE</CustomTh>
+          <CustomTh>QUANTITY</CustomTh>
+        </CustomTHead>
 
-      <CustomTBody>
-        {data.map((item, index) => (
-          <CustomTr key={nanoid()} prod_id={Number(item.id)}>
-            <CustomTd>{index + 1}</CustomTd>
-            <CustomTd>{item.prod_name}</CustomTd>
-            <CustomTd>
-              {item.prod_currency}
-              {item.prod_price}
-            </CustomTd>
-            <CustomTd>{item.prod_quantity}</CustomTd>
-          </CustomTr>
-        ))}
-      </CustomTBody>
-    </CustomTable>
+        <CustomTBody>
+          {data.map((item, index) => (
+            <CustomTr key={nanoid()} prod_id={Number(item.id)}>
+              <CustomTd>{index + 1}</CustomTd>
+              <CustomTd>{item.prod_name}</CustomTd>
+              <CustomTd>
+                {item.prod_currency}
+                {item.prod_price}
+              </CustomTd>
+              <CustomTd>{item.prod_quantity}</CustomTd>
+            </CustomTr>
+          ))}
+        </CustomTBody>
+      </CustomTable>
+    </section>
   );
 }
