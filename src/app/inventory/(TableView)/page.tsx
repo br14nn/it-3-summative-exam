@@ -23,7 +23,7 @@ export default async function InventoryPage() {
           <CustomTh>QUANTITY</CustomTh>
         </CustomTHead>
 
-        {/* {data.length ? (
+        {data.length ? (
           <CustomTBody className="max-h-[600px] overflow-y-auto">
             {data.map((item, index) => (
               <CustomTr key={nanoid()} prod_id={Number(item.id)}>
@@ -37,7 +37,7 @@ export default async function InventoryPage() {
               </CustomTr>
             ))}
           </CustomTBody>
-        ) : null} */}
+        ) : null}
       </CustomTable>
     </section>
   );
